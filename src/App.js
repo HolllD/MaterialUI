@@ -1,44 +1,28 @@
+// Imports básicos
+import React, { Component } from "react";
 import './App.css';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 
-function App() {
+// BrowserRouter para redirecionamento
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Typography component="h1" variant="h2" align="center" color="Secondary" gutterBottom>
-          Exemplo de login
-        </Typography>
-        <form>
-          <TextField
-            id="Login"
-            label="Login"
-            variant="filled"
-            color="secondary"
-            margin="normal"
-            fullWidth
-            required
-          />
+// Import das pages
+import LoginPage from "./pages/login"
+import Dashboard from "./pages/dashboard"
 
-          <TextField
-            id="Senha"
-            label="Senha"
-            variant="filled"
-            color="secondary"
-            margin="normal"
-            fullWidth
-            required
-          />
-        </form>
-        <Box m={2}>
-          <Button variant="contained" color="secondary" href="https:/google.com/">Entrar</Button>
-        </Box>
-      </header>
-    </div>
-  );
+// Loop principal
+class App extends Component {
+  render() {
+    return <Router>
+      {/* Redirecionamento dependendo da URL */}
+      <Switch>
+      <Route exact path="/Login" component={LoginPage}/>
+      <Route exact path="/Dashboard" Component={Dashboard}/>
+      {/* Caso não ache */}
+      <Redirect to={"/Login"} />
+      </Switch>
+      <Route path="/dashboard" component={Dashboard}/>
+    </Router>
+  }
 }
 
 export default App;
