@@ -4,6 +4,7 @@ import React from 'react';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -65,8 +66,15 @@ const Dashboard = () => {
                     {/* Parecido com box, mas para ter um bg branco */}
                         <Paper>
                             {/* Título */}
+                            <form>
                             <Typography align="center" color="Black" variant="h4">Produtos Vendidos</Typography>
-                            
+                            <Box m={1}>
+                                <TextField id="standard-basic" label="Pesquisar" />
+                            </Box>
+                            <Box m={1}>
+                                <Button variant="contained" href="/Login">Sair</Button>
+                            </Box>
+                            </form>
                             {/* Tabelas */}
                             <Table>
                                 <TableHead>
