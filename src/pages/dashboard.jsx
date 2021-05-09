@@ -11,36 +11,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import { Typography } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            flexGrow: 1,
-        },
-        paper: {
-            padding: theme.spacing(2),
-            margin: 'auto',
-            maxWidth: 500,
-        },
-        image: {
-            width: 128,
-            height: 128,
-        },
-        img: {
-            margin: 'auto',
-            display: 'block',
-            maxWidth: '100%',
-            maxHeight: '100%',
-        },
-    }),
-);
 
-// Página para login
-
+// Função ajudando 
 function createData(time, name, item_ID, amount) {
     return { time, name, item_ID, amount };
 }
@@ -78,41 +55,50 @@ const Dashboard = () => {
 
     return (
         <header className="App-header">
-        <React.Fragment>
-            
-            <Box m={2}>
-            <Container>
-                
-                <Paper>
-                <Typography align="center" color="Black" variant="h4">Produtos</Typography>
-                <Table size="small">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>ID</TableCell>
-                            <TableCell>Data</TableCell>
-                            <TableCell>Nome</TableCell>
-                            <TableCell>ID do produto</TableCell>
-                            <TableCell>Quantidade</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {MockData.map((MockData) => (
-                            <TableRow key={MockData.id}>
-                                <TableCell>{MockData.time}</TableCell>
-                                <TableCell>{MockData.name}</TableCell>
-                                <TableCell>{MockData.item_ID}</TableCell>
-                                <TableCell>{MockData.amount}</TableCell>
-                                <TableCell align="right">{MockData.amount}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-                <div>
-                </div>
-                </Paper>
-            </Container>
-            </Box>
-        </React.Fragment>
+            <React.Fragment>
+                {/* Título */}
+                <Box m={2}>
+                    <form>
+                    <Typography component="h3" variant="h4" align="center" gutterBottom> Exemplo de dashboard </Typography>
+                    <Button>Sair</Button>
+                    </form>
+                </Box>
+                {/* Box centralizando o conteúdo */}
+                <Box m={1}>
+                    {/* Parecido com box, mas para ter um bg branco */}
+                        <Paper>
+                            {/* Título */}
+                            <Typography align="center" color="Black" variant="h4">Histórico de produtos vendidos</Typography>
+                            {/* Tabelas */}
+                            <Table size="small">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>ID</TableCell>
+                                        <TableCell>Data</TableCell>
+                                        <TableCell>Nome</TableCell>
+                                        <TableCell>ID do produto</TableCell>
+                                        <TableCell>Quantidade</TableCell>
+                                    </TableRow>
+                                </TableHead>
+
+                                {/* Uso da MockData */}
+                                <TableBody>
+                                    {MockData.map((MockData) => (
+                                        <TableRow key={MockData.id}>
+                                            <TableCell>{MockData.time}</TableCell>
+                                            <TableCell>{MockData.name}</TableCell>
+                                            <TableCell>{MockData.item_ID}</TableCell>
+                                            <TableCell>{MockData.amount}</TableCell>
+                                            <TableCell align="right">{MockData.amount}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                            <div>
+                            </div>
+                        </Paper>
+                </Box>
+            </React.Fragment>
         </header>
     );
 }

@@ -40,7 +40,7 @@ const LoginPage = () => {
                 </form>
                 {/* Botão para entrar, botado dentro de uma Box para aumentar a margem e deixar mais organizado*/}
                 <Box m={2}>
-                    <Button variant="contained" color="secondary" href="/Dashboard">Entrar</Button>
+                    <Button variant="contained" color="secondary" href="/Dashboard" onClick={() => {alert("Redirecionando para o Dashboard")}}>Entrar</Button>
                 </Box>
             </header>
         </div>
