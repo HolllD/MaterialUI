@@ -58,19 +58,17 @@ const Dashboard = () => {
             <React.Fragment>
                 {/* Título */}
                 <Box m={2}>
-                    <form>
                     <Typography component="h3" variant="h4" align="center" gutterBottom> Exemplo de dashboard </Typography>
-                    <Button>Sair</Button>
-                    </form>
                 </Box>
                 {/* Box centralizando o conteúdo */}
-                <Box m={1}>
+                <Box m={1} width="70%">
                     {/* Parecido com box, mas para ter um bg branco */}
                         <Paper>
                             {/* Título */}
-                            <Typography align="center" color="Black" variant="h4">Histórico de produtos vendidos</Typography>
+                            <Typography align="center" color="Black" variant="h4">Produtos Vendidos</Typography>
+                            
                             {/* Tabelas */}
-                            <Table size="small">
+                            <Table>
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>ID</TableCell>
