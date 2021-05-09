@@ -3,6 +3,7 @@ import React from 'react';
 
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -78,9 +79,12 @@ const Dashboard = () => {
     return (
         <header className="App-header">
         <React.Fragment>
+            
+            <Box m={2}>
             <Container>
+                
                 <Paper>
-                <Typography align="center" color="Black" variant="h4">Exemplo de tabela</Typography>
+                <Typography align="center" color="Black" variant="h4">Produtos</Typography>
                 <Table size="small">
                     <TableHead>
                         <TableRow>
@@ -107,6 +111,7 @@ const Dashboard = () => {
                 </div>
                 </Paper>
             </Container>
+            </Box>
         </React.Fragment>
         </header>
     );
