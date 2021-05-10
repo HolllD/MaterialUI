@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 // Página para login
 
@@ -13,7 +14,7 @@ const LoginPage = () => {
             <header className="App-header">
                 {/* "Logo" */}
                 <Typography component="h1" variant="h2" align="center" color="Secondary" gutterBottom>
-                    Exemplo de login
+                    Login <AccountCircle fontSize="large"/>
         </Typography>
                 {/* Form para organizar os inputs de login e senha*/}
                 <form>

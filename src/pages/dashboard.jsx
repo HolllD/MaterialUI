@@ -5,6 +5,7 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -17,7 +18,15 @@ import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuIcon from '@material-ui/icons/Menu';
 
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import AddIcon from '@material-ui/icons/Add';
+
+import Toolbar from '@material-ui/core/Toolbar';
 // Função ajudando 
 function createData(time, name, item_ID, amount) {
     return { time, name, item_ID, amount };
@@ -59,50 +68,67 @@ const Dashboard = () => {
             <React.Fragment>
                 {/* Título */}
                 <Box m={2}>
-                    <Typography component="h3" variant="h4" align="center" gutterBottom> Exemplo de dashboard </Typography>
+                    <Typography component="h3" variant="h4" align="center" gutterBottom> Dashboard </Typography>
+                    <Box>
+                    </Box>
                 </Box>
                 {/* Box centralizando o conteúdo */}
                 <Box m={1} width="70%">
                     {/* Parecido com box, mas para ter um bg branco */}
-                        <Paper>
-                            {/* Título */}
-                            <form>
-                            <Typography align="center" color="Black" variant="h4">Produtos Vendidos</Typography>
-                            <Box m={1}>
-                                <TextField id="standard-basic" label="Pesquisar" />
-                            </Box>
-                            <Box m={1}>
-                                <Button variant="contained" href="/Login">Sair</Button>
-                            </Box>
-                            </form>
-                            {/* Tabelas */}
-                            <Table>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>ID</TableCell>
-                                        <TableCell>Data</TableCell>
-                                        <TableCell>Nome</TableCell>
-                                        <TableCell>ID do produto</TableCell>
-                                        <TableCell>Quantidade</TableCell>
-                                    </TableRow>
-                                </TableHead>
+                    <Paper>
+                        {/* Título */}
+                        <form>
+                            <Paper elevation={0}>
+                                <Toolbar variant="regular">
+                                <TextField id="standard-basic" label="Pesquisar" margin="dense" fullWidth="true" />
+                                <Grid justify="space-between" container></Grid>
+                                <Box textAlign="right">
+                                    <PopupState variant="popover" popupId="demo-popup-menu">
+                                        {(popupState) => (
+                                            <React.Fragment>
+                                                <Button variant="contained" {...bindTrigger(popupState)}>
+                                                    <MenuIcon/>
+                                                </Button>
+                                                <Menu {...bindMenu(popupState)}>
+                                                    <MenuItem onClick={popupState.close}>Adicionar novos itens<AddIcon /></MenuItem>
+                                                    <MenuItem onClick={popupState.close}>Mudar conta<AccountCircle /></MenuItem>
+                                                    <MenuItem onClick={popupState.close}>Sair<ExitToAppIcon /></MenuItem>
+                                                </Menu>
+                                            </React.Fragment>
+                                        )}
+                                    </PopupState>
+                                </Box>
+                            </Toolbar>
+                            </Paper>
+                        </form>
+                        {/* Tabelas */}
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>ID</TableCell>
+                                    <TableCell>Data</TableCell>
+                                    <TableCell>Nome</TableCell>
+                                    <TableCell>ID do produto</TableCell>
+                                    <TableCell>Quantidade</TableCell>
+                                </TableRow>
+                            </TableHead>
 
-                                {/* Uso da MockData */}
-                                <TableBody>
-                                    {MockData.map((MockData) => (
-                                        <TableRow key={MockData.id}>
-                                            <TableCell>{MockData.time}</TableCell>
-                                            <TableCell>{MockData.name}</TableCell>
-                                            <TableCell>{MockData.item_ID}</TableCell>
-                                            <TableCell>{MockData.amount}</TableCell>
-                                            <TableCell align="right">{MockData.amount}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                            <div>
-                            </div>
-                        </Paper>
+                            {/* Uso da MockData */}
+                            <TableBody>
+                                {MockData.map((MockData) => (
+                                    <TableRow key={MockData.id}>
+                                        <TableCell>{MockData.time}</TableCell>
+                                        <TableCell>{MockData.name}</TableCell>
+                                        <TableCell>{MockData.item_ID}</TableCell>
+                                        <TableCell>{MockData.amount}</TableCell>
+                                        <TableCell align="right">{MockData.amount}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                        <div>
+                        </div>
+                    </Paper>
                 </Box>
             </React.Fragment>
         </header>
